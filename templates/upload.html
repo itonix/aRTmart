@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Artwork</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { margin-bottom: 20px; }
+        form { display: flex; flex-direction: column; max-width: 400px; }
+        label { margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="number"], input[type="file"] {
+            padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 20px; padding: 10px; border: none; border-radius: 4px;
+            background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer;
+        }
+        button:hover { background-color: #45a049; }
+        a { margin-top: 20px; display: inline-block; text-decoration: none; color: #333; }
+    </style>
+</head>
+<body>
+    <h2>Upload New Artwork</h2>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Artwork Title</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="price">Price ($)</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+
+        <label for="file">Select Image</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <a href="/dashboard">Back to Dashboard</a>
+    <a href="/logout" style="margin-left:20px;">Logout</a>
+</body>
+</html>

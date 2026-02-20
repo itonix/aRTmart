@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtMart - Home</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>ArtMart</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload Art</a>
+      <a href="/cart">Cart</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Available Artworks</h2>
+    <div class="art-grid">
+
+      {% for art in artworks %}
+      <div class="art-card">
+        <img src="{{ art.thumbnail_url }}" alt="{{ art.title }}">
+        <h3>{{ art.title }}</h3>
+        <p>By: {{ art.artist_name }}</p>
+        <p>Price: ${{ art.price }}</p>
+        <a href="/art/{{ art.id }}" class="btn">View & Buy</a>
+      </div>
+      {% endfor %}
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 ArtMart</p>
+  </footer>
+</body>
+
+
+</html>

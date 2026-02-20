@@ -1,0 +1,31 @@
+<header>
+  <h1>ArtMart</h1>
+  <nav>
+    <a href="/">Home</a>
+    {% if is_seller %}
+      <a href="/upload">Upload Art</a>
+    {% endif %}
+    <a href="/cart">Cart</a>
+    <a href="/logout">Logout</a>
+  </nav>
+</header>
+
+
+{% if is_seller %}
+  <a href="/upload" class="btn">Upload New Artwork</a>
+{% endif %}
+
+<div class="art-grid">
+  {% for art in artworks %}
+    <div class="art-card">
+      <img src="{{ art.thumbnail_url }}" alt="{{ art.title }}">
+      <h3>{{ art.title }}</h3>
+      <p>By: {{ art.artist_name }}</p>
+      <p>Price: ${{ art.price }}</p>
+
+      {% if not is_seller %}
+        <a href="/art/{{ art.id }}" class="btn">View & Buy</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

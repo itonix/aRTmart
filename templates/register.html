@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - ArtMart</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>ArtMart</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload Art</a>
+      <a href="/cart">Cart</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Register</h1>
+    <form action="/register" method="post">
+      <label>Username:</label><br>
+      <input type="text" name="username" required><br>
+
+      <label>Email:</label><br>
+      <input type="email" name="email" required><br>
+
+      <label>Password:</label><br>
+      <input type="password" name="password" required><br><br>
+
+      <!-- Role selection -->
+      <label>Register as:</label><br>
+      <select name="role" required>
+        <option value="buyer" selected>Buyer</option>
+        <option value="seller">Seller</option>
+      </select><br><br>
+
+      <button type="submit">Register</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 ArtMart</p>
+  </footer>
+</body>
+</html>

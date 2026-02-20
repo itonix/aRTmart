@@ -1,0 +1,17 @@
+<h2>{{ artwork.title }}</h2>
+<img src="{{ artwork.original_url }}" alt="{{ artwork.title }}">
+<p>By: {{ artwork.artist_name }}</p>
+<p>Price: ${{ artwork.price }}</p>
+
+{% if user %}
+  <form method="post" action="/cart/add/{{ artwork.id }}">
+    <button type="submit">Add to Cart</button>
+  </form>
+{% else %}
+  <p><a href="/login">Login</a> to add to cart</p>
+{% endif %}
+
+
+
+
+

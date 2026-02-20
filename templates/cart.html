@@ -1,0 +1,41 @@
+<h2>{{ user.username }}'s Cart</h2>
+
+{% if cart_items %}
+  <ul style="list-style:none; padding:0;">
+  {% for item in cart_items %}
+    <li style="margin-bottom:15px; border-bottom:1px solid #ccc; padding-bottom:10px;">
+
+      <img src="{{ item.artwork.thumbnail_url }}" width="120">
+
+      <div>
+        <strong>{{ item.artwork.title }}</strong><br>
+        Artist: {{ item.artwork.artist_name }}<br>
+        Price: ${{ "%.2f"|format(item.artwork.price) }}
+      </div>
+
+      <form method="post" action="/cart/remove/{{ item.id }}" style="display:inline;">
+        <button type="submit" style="background:red; color:white; border:none; padding:5px 10px;">
+          Remove
+        </button>
+      </form>
+
+    </li>
+  {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h3>
+    Total: $
+    {{ "%.2f"|format(cart_items | sum(attribute='artwork.price')) }}
+  </h3>
+
+  <form action="/checkout" method="post">
+    <button type="submit" style="background:green; color:white; padding:10px 20px; border:none;">
+      Checkout
+    </button>
+  </form>
+
+{% else %}
+  <p>Your cart is empty.</p>
+{% endif %}
